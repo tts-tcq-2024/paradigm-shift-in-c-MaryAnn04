@@ -1,24 +1,27 @@
 #include <stdio.h>
 #include <assert.h>
-int rangecheck( float value, float lower_limit, float upper_limit, char parameter)
-{
-if( value < lower_limit || value > upperlimit)
-{
-printf("%s is out of range", parameter);
-return 0;
+
+// Simplified range check function
+int rangecheck(float value, float lower_limit, float upper_limit) {
+    return (value >= lower_limit && value <= upper_limit);
 }
-return 1;
-}
+
+// Battery status check
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-  if(rangecheck(Temperature,0,45,"Temperature")||
-    rangecheck(SOC,20,80,"SOC")|| 
-  (chargeRate > 0.8){
-    return 0;
-  } 
-  return 1;
+    // Check temperature and SOC
+    int tempOk = rangecheck(temperature, 0, 45);
+    int socOk = rangecheck(soc, 20, 80);
+
+    // Check if charge rate is within acceptable limits
+    int chargeRateOk = (chargeRate <= 0.8);
+
+    // Return 1 if all conditions are met
+    return tempOk && socOk && chargeRateOk;
 }
 
 int main() {
-  assert(batteryIsOk(25, 70, 0.7));
-  assert(!batteryIsOk(50, 85, 0));
+    // Testing the batteryIsOk function
+    assert(batteryIsOk(25, 70, 0.7)); // Should pass
+    assert(!batteryIsOk(50, 85, 0));  // Should fail
+    return 0;
 }
