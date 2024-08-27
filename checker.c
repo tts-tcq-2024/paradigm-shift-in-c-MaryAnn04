@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <assert.h>
-
+int rangecheck( float value, float lower_limit, float upper_limit, char parameter)
+{
+if( value < lower_limit || value > upperlimit)
+{
+printf("%s is out of range", parameter);
+return 0;
+}
+return 1;
+}
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-  if(temperature < 0 || temperature > 45) {
-    printf("Temperature out of range!\n");
+  if(rangecheck(Temperature,0,45,"Temperature")||
+    rangecheck(SOC,20,80,"SOC")|| 
+  (chargeRate > 0.8){
     return 0;
-  } else if(soc < 20 || soc > 80) {
-    printf("State of Charge out of range!\n");
-    return 0;
-  } else if(chargeRate > 0.8) {
-    printf("Charge Rate out of range!\n");
-    return 0;
-  }
+  } 
   return 1;
 }
 
