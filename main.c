@@ -1,7 +1,7 @@
 #include "Parameter_Check.h"
 #include "Battery_CheckChargeRate.h"
 #include "Battery_CheckSOC.h"
-#include "Battery_ChechTemperature.h"
+#include "Battery_CheckTemperature.h"
 
 int main() {
     ParameterState temperatureState;
