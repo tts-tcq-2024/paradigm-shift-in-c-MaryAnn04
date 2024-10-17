@@ -9,7 +9,7 @@ void checkChargeRate(float chargeRate, ParameterState *state)
     
     checkBounds(chargeRate, 0, CHARGE_RATE_MAX, state->errorMessage);
     
-    if (WARN_CHARGE_RATE) 
+    if (WARN_FOR_CHARGE_RATE) 
     {
         handleWarningHigh(chargeRate, CHARGE_RATE_MAX, state);
     }
